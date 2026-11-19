@@ -1,0 +1,6 @@
+{
+  "name": "LaundryCalc",
+  "description": "Katalog layanan dan kalkulator estimasi biaya laundry dengan aturan minimum charge 3 kg serta pesan pesanan otomatis ke WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

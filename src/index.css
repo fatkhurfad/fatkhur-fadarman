@@ -1,0 +1,40 @@
+/* Gaya global dan konfigurasi huruf utama aplikasi LaundryCalc. */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@keyframes total-change-reveal {
+  0% {
+    opacity: 0.35;
+    transform: translateY(4px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-total-change {
+  animation: total-change-reveal 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-total-change {
+    animation: none;
+  }
+}
