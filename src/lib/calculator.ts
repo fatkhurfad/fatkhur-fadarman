@@ -119,6 +119,15 @@ export function getMainServiceByCode(code: ServiceCode): MainService {
 }
 
 /**
+ * Menentukan kode layanan utama dengan tarif per kilogram paling hemat berdasarkan katalog.
+ */
+export function getCheapestServiceCode(): ServiceCode {
+  return MAIN_SERVICES.reduce((lowest, current) =>
+    current.pricePerKg < lowest.pricePerKg ? current : lowest,
+  ).code;
+}
+
+/**
  * Menghitung berat ditagih (BL-01) serta rincian estimasi biaya layanan dan add-on (BL-02).
  */
 export function calculateEstimate(input: EstimateInput): EstimateResult {

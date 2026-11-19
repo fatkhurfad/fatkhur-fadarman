@@ -1,5 +1,7 @@
-/* Komponen FT-01 untuk menampilkan katalog paket layanan utama beserta tarif dan durasi pengerjaan. */
-import { MAIN_SERVICES, type ServiceCode } from '../config.ts';
+/* Komponen FT-01 untuk menampilkan katalog paket layanan utama beserta tarif, durasi, dan penanda hemat. */
+import { Tag } from 'lucide-react';
+import { MAIN_SERVICES, SERVICE_BADGE_LABELS, type ServiceCode } from '../config.ts';
+import { getCheapestServiceCode } from '../lib/calculator.ts';
 import { formatRupiah } from '../lib/format.ts';
 
 interface ServiceCatalogProps {
@@ -8,6 +10,8 @@ interface ServiceCatalogProps {
 }
 
 export function ServiceCatalog({ selectedCode, onSelect }: ServiceCatalogProps) {
+  const cheapestServiceCode = getCheapestServiceCode();
+
   return (
     <section aria-labelledby="service-catalog-heading" className="space-y-3">
       <div className="space-y-1">
@@ -23,6 +27,8 @@ export function ServiceCatalog({ selectedCode, onSelect }: ServiceCatalogProps) 
         <legend className="sr-only">Daftar paket layanan laundry utama</legend>
         {MAIN_SERVICES.map((service) => {
           const isSelected = service.code === selectedCode;
+          const isCheapest = service.code === cheapestServiceCode;
+
           return (
             <label
               key={service.code}
@@ -51,8 +57,16 @@ export function ServiceCatalog({ selectedCode, onSelect }: ServiceCatalogProps) 
               </span>
 
               <span className="flex-1 min-w-0 space-y-1">
-                <span className="flex flex-wrap items-baseline justify-between gap-2">
-                  <span className="text-base font-semibold text-neutral-900">{service.name}</span>
+                <span className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span className="text-base font-semibold text-neutral-900">{service.name}</span>
+                    {isCheapest && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-sm font-medium text-emerald-800 whitespace-nowrap">
+                        <Tag className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                        <span>{SERVICE_BADGE_LABELS.cheapest}</span>
+                      </span>
+                    )}
+                  </span>
                   <span
                     className={`text-base font-semibold tabular-nums whitespace-nowrap ${
                       isSelected ? 'text-blue-700' : 'text-neutral-900'

@@ -32,6 +32,7 @@ Dokumen ini mencatat seluruh pilihan tampilan dan token visual yang dipakai pada
 | Cincin fokus | `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2` |
 | Peringatan minimum charge | `bg-amber-50 text-amber-800` + ikon `Info` |
 | Error validasi | `bg-red-50 text-red-800` / `text-red-800` + ikon `AlertCircle` |
+| Badge layanan paling hemat | `bg-emerald-50 text-emerald-800 rounded-full` + ikon `Tag` |
 | Bayangan elemen melayang | `shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.08)]` |
 
 ## Aturan Gaya yang Dipatuhi

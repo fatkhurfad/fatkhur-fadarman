@@ -83,6 +83,10 @@ export const WEIGHT_LIMITS = {
   defaultKg: 3,
 } as const;
 
+export const SERVICE_BADGE_LABELS = {
+  cheapest: 'Paling Hemat',
+} as const;
+
 export const ESTIMATE_DISCLAIMER =
   'Total di atas adalah estimasi awal. Berat pasti akan ditimbang kembali saat pakaian diterima oleh kasir/kurir laundry.';
 
